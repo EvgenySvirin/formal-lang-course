@@ -109,6 +109,3 @@ def test_nfa1():
     nfa2.add_transition(state4, symb_b, state0)
 
     assert nfa2.is_equivalent_to(nfa1)
-
-
-test_nfa1()
