@@ -14,16 +14,20 @@ def is_wcnf_product(prod: CFG.productions) -> bool:
     :return: True if matches else False
     """
     bd = prod.body
-    return len(bd) == 0 or (len(bd) == 1 and (type(bd[0]) == Terminal
-                                              or type(bd[0]) == epsilon)) or (len(bd) == 2 and type(bd[0]) == Variable
-                                                                              and type(bd[1] == Variable))
+    return (
+        len(bd) == 0
+        or (len(bd) == 1 and (type(bd[0]) == Terminal or type(bd[0]) == epsilon))
+        or (len(bd) == 2 and type(bd[0]) == Variable and type(bd[1] == Variable))
+    )
 
 
 def test_cfg1():
-    cfg = CFG.from_text("""
+    cfg = CFG.from_text(
+        """
     S -> C
     C -> S C
-    C -> c """)
+    C -> c """
+    )
 
     assert not all(is_wcnf_product(p) for p in cfg.productions)
 
@@ -39,18 +43,20 @@ def test_cfg1():
 
 
 def test_cfg2():
-    cfg = CFG.from_text("""
+    cfg = CFG.from_text(
+        """
     S -> A
     A -> B C D
-    B -> b 
+    B -> b
     C -> c
     D -> d
     B -> S
     B -> E
-    E -> e 
+    E -> e
     d -> e
     C -> S C
-    B -> $ """)
+    B -> $ """
+    )
     assert not all(is_wcnf_product(p) for p in cfg.productions)
 
     wcnf = grams.build_wcnf(cfg)
@@ -72,15 +78,16 @@ def test_cfg_read():
             """
             S -> A
             A -> B C D
-            B -> b 
+            B -> b
             C -> c
             D -> d
             B -> S
             B -> E
-            E -> e 
+            E -> e
             d -> e
             C -> S C
-            B -> $ """)
+            B -> $ """
+        )
         filename = temp_file.name
 
     cfg = grams.read_cfg(filename)

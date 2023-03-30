@@ -11,10 +11,13 @@ def build_wcnf(cfg: CFG) -> CFG:
     :return: weak Chomsky normal form grammar
     """
     helperCFG = cfg.eliminate_unit_productions().remove_useless_symbols()
-    new_prodictions = helperCFG._decompose_productions(helperCFG._get_productions_with_only_single_terminals())
+    new_prodictions = helperCFG._decompose_productions(
+        helperCFG._get_productions_with_only_single_terminals()
+    )
 
-    return CFG(productions=new_prodictions,
-               start_symbol=helperCFG.start_symbol).remove_useless_symbols()
+    return CFG(
+        productions=new_prodictions, start_symbol=helperCFG.start_symbol
+    ).remove_useless_symbols()
 
 
 def read_cfg(filename: str) -> CFG:
@@ -25,4 +28,3 @@ def read_cfg(filename: str) -> CFG:
     """
     with open(filename) as f:
         return CFG.from_text("".join(f.readlines()))
-
