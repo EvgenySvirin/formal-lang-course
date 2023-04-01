@@ -1,4 +1,4 @@
-import project.finite_automaton as fab
+import project.automatons as fab
 import pyformlang.finite_automaton as fa
 import project.graphs as gr
 import cfpq_data as cd
