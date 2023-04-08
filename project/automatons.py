@@ -6,7 +6,7 @@ from pyformlang.cfg import CFG, Variable, Terminal
 from pyformlang.finite_automaton import DeterministicFiniteAutomaton
 from pyformlang.regular_expression import Regex
 
-from project.matrices import DfaMatrices
+from project.matrices import NdfaMatrices
 
 
 def dfa_from_regex(expr: re.Regex) -> fa.DeterministicFiniteAutomaton:
@@ -77,12 +77,12 @@ class RFA:
             dfa.minimize()
         self.start_symbol = start_symbol
 
-    def to_matrices(self) -> Dict[Any, DfaMatrices]:
+    def to_matrices(self) -> Dict[Any, NdfaMatrices]:
         """
         :param self:
         :return: matrix wrapper for each dfa
         """
         matrices = {}
         for var, dfa in self.dfas.items():
-            matrices[var] = DfaMatrices(dfa)
+            matrices[var] = NdfaMatrices(dfa)
         return matrices

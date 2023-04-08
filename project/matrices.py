@@ -2,7 +2,7 @@ from scipy import sparse
 from pyformlang.finite_automaton import NondeterministicFiniteAutomaton
 
 
-class DfaMatrices:
+class NdfaMatrices:
     def __init__(self, nfa: NondeterministicFiniteAutomaton = None):
         """
         initialize sparse matrices for nfa
