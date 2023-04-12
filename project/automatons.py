@@ -63,6 +63,14 @@ class RFA:
     dfas: Dict[Variable, DeterministicFiniteAutomaton]
     start_symbol: Variable
 
+    def minimize(self):
+        """
+        minimize saved dfas
+        :return:
+        """
+        for var, dfa in self.dfas.items():
+            self.dfas[var] = dfa.minimize()
+
     def __init__(
         self, dfas: Dict[Variable, DeterministicFiniteAutomaton], start_symbol: Variable
     ):
@@ -73,9 +81,8 @@ class RFA:
         :return this
         """
         self.dfas = dfas
-        for var, dfa in dfas.items():
-            dfa.minimize()
         self.start_symbol = start_symbol
+        self.minimize()
 
     def to_matrices(self) -> Dict[Any, NdfaMatrices]:
         """
