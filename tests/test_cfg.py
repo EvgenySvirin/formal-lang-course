@@ -31,7 +31,7 @@ def test_cfg1():
 
     assert not all(is_wcnf_product(p) for p in cfg.productions)
 
-    wcnf = grams.build_wcnf(cfg)
+    wcnf = grams.cfg_to_wcnf(cfg)
     assert all(is_wcnf_product(p) for p in wcnf.productions)
 
     start_symbol_righter = False
@@ -59,7 +59,7 @@ def test_cfg2():
     )
     assert not all(is_wcnf_product(p) for p in cfg.productions)
 
-    wcnf = grams.build_wcnf(cfg)
+    wcnf = grams.cfg_to_wcnf(cfg)
     assert all(is_wcnf_product(p) for p in wcnf.productions)
 
     start_symbol_righter = False
@@ -93,7 +93,7 @@ def test_cfg_read():
     cfg = grams.read_cfg(filename)
     assert not all(is_wcnf_product(p) for p in cfg.productions)
 
-    wcnf = grams.build_wcnf(cfg)
+    wcnf = grams.cfg_to_wcnf(cfg)
     assert all(is_wcnf_product(p) for p in wcnf.productions)
 
     start_symbol_righter = False

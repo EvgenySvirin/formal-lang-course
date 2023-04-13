@@ -1,10 +1,16 @@
 import pyformlang.finite_automaton as fa
 import pyformlang.regular_expression as re
 import networkx as nx
+from typing import AbstractSet, Dict, Tuple, Any
+from pyformlang.cfg import CFG, Variable, Terminal
+from pyformlang.finite_automaton import DeterministicFiniteAutomaton
+from pyformlang.regular_expression import Regex
+
+from project.matrices import NdfaMatrices
 
 
-def get_min_dfa_from_regex(expr: re.Regex) -> fa.DeterministicFiniteAutomaton:
-    """Build a minimal DFA that matches the given regular expression
+def dfa_from_regex(expr: re.Regex) -> fa.DeterministicFiniteAutomaton:
+    """Create a minimal DFA that matches the given regular expression
     Parameters:
     expr (Regex) : regular expression
     Returns
@@ -14,20 +20,20 @@ def get_min_dfa_from_regex(expr: re.Regex) -> fa.DeterministicFiniteAutomaton:
     return dfa.minimize()
 
 
-def get_min_dfa_from_str(expr: str) -> fa.DeterministicFiniteAutomaton:
-    """Build a minimal DFA that matches the given regular expression
+def dfa_from_str(expr: str) -> fa.DeterministicFiniteAutomaton:
+    """Create a minimal DFA that matches the given regular expression
     Parameters:
     expr (str) : regular expression
     Returns
     dfa (DeterministicFiniteAutomaton): minimal DFA that matches the given regular expression
     """
-    return get_min_dfa_from_regex(re.Regex(expr))
+    return dfa_from_regex(re.Regex(expr))
 
 
-def get_nfa_from_graph(
+def nfa_from_graph(
     graph: nx.MultiDiGraph, start_states=None, final_states=None
 ) -> fa.NondeterministicFiniteAutomaton:
-    """Build NFA from given graph, start states and final states.
+    """Create NFA from given graph, start states and final states.
     Default start and final states are all vercies in graph
     Parameters:
     graph (str) : graph
@@ -53,8 +59,37 @@ def get_nfa_from_graph(
     return nfa
 
 
-def func():
-    """
+class RFA:
+    dfas: Dict[Variable, DeterministicFiniteAutomaton]
+    start_symbol: Variable
 
-    :return:
-    """
+    def minimize(self):
+        """
+        minimize saved dfas
+        :return:
+        """
+        for var, dfa in self.dfas.items():
+            self.dfas[var] = dfa.minimize()
+
+    def __init__(
+        self, dfas: Dict[Variable, DeterministicFiniteAutomaton], start_symbol: Variable
+    ):
+        """
+        recursive finite automaton from automatons
+        :param dfas:
+        :param start_symbol:
+        :return this
+        """
+        self.dfas = dfas
+        self.start_symbol = start_symbol
+        self.minimize()
+
+    def to_matrices(self) -> Dict[Any, NdfaMatrices]:
+        """
+        :param self:
+        :return: matrix wrapper for each dfa
+        """
+        matrices = {}
+        for var, dfa in self.dfas.items():
+            matrices[var] = NdfaMatrices(dfa)
+        return matrices
