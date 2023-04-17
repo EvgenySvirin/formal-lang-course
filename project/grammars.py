@@ -130,7 +130,9 @@ def run_hellings(cfg: CFG, graph: nx.MultiDiGraph) -> Set[Tuple]:
     prods = wcnf.productions
 
     for prod in prods:
-        if len(prod.body) == 0 or (len(prod.body) == 1 and "$" == prod.body[0].to_text()):
+        if len(prod.body) == 0 or (
+            len(prod.body) == 1 and "$" == prod.body[0].to_text()
+        ):
             for node in graph.nodes:
                 reachable.add((node, prod.head, node))
         elif len(prod.body) == 1:
@@ -184,9 +186,8 @@ def run_hellings_cfg_file(cfg_filename: str, graph) -> Set[Tuple]:
 
 
 def run_hellings_with_suit(
-        cfg: CFG, graph,
-        start_nodes: List, final_nodes: List,
-        nonterminal: Variable) -> Dict:
+    cfg: CFG, graph, start_nodes: List, final_nodes: List, nonterminal: Variable
+) -> Dict:
     """
     Run Hellings Algorithm solving reachability problem
     with given context free grammar, graph, start nodes and final nodes and nonterminal
@@ -203,8 +204,7 @@ def run_hellings_with_suit(
     res = {}
     reachable = run_hellings(cfg, graph)
     for s, label, t in reachable:
-        if s in start_nodes and t in final_nodes\
-                and label == nonterminal:
+        if s in start_nodes and t in final_nodes and label == nonterminal:
             if s not in res:
                 res[s] = set()
             res[s].add(t)
