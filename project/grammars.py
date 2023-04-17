@@ -117,92 +117,92 @@ class ECFG:
         )
 
 
-def run_hellings(cfg: CFG, graph: nx.MultiDiGraph) -> Set[Tuple]:
+def run_hellings(cfg: CFG, gr: nx.MultiDiGraph) -> Set[Tuple]:
     """
     Run Hellings Algorithm solving reachability problem
     with given context free grammar and graph,
     :param cfg: given context free grammar,
-    :param graph: given graph
+    :param gr: given graph
     :return: set of triples: starting node, Variable of given grammar in weak chomsky normal form, reachable node
     """
     wcnf = cfg_to_wcnf(cfg)
-    reachable = set()
     prods = wcnf.productions
+    reach = set()
 
     for prod in prods:
         if len(prod.body) == 0 or (
             len(prod.body) == 1 and "$" == prod.body[0].to_text()
         ):
-            for node in graph.nodes:
-                reachable.add((node, prod.head, node))
+            for node in gr.nodes:
+                reach.add((node, prod.head, node))
         elif len(prod.body) == 1:
-            for q_s, q_t, label in graph.edges.data(data="label"):
+            for q_s, q_t, label in gr.edges.data(data="label"):
                 if label == prod.body[0].to_text():
-                    reachable.add((q_s, prod.head, q_t))
+                    reach.add((q_s, prod.head, q_t))
 
-    q = list(reachable)
+    q = list(reach)
     while len(q) != 0:
-        next_reachable = set()
+        next_reach = set()
         q_s, q_label, q_t = q.pop()
-        for r_s, r_label, r_t in reachable:
+        for r_s, r_label, r_t in reach:
             if q_t == r_s:
                 for prod in prods:
                     if prod.body == [q_label, r_label]:
-                        next_reachable.add((q_s, prod.head, r_t))
+                        next_reach.add((q_s, prod.head, r_t))
             if q_s == r_t:
                 for prod in prods:
                     if prod.body == [r_label, q_label]:
-                        next_reachable.add((r_s, prod.head, q_t))
-        next_reachable = next_reachable.difference(reachable)
-        q.extend(next_reachable)
-        reachable = reachable.union(next_reachable)
-    return reachable
+                        next_reach.add((r_s, prod.head, q_t))
+        new_reach = next_reach.difference(reach)
+        q.extend(new_reach)
+        reach = reach.union(new_reach)
+    return reach
 
 
-def run_hellings_cfg_text(cfg_text: str, graph) -> Set[Tuple]:
+def run_hellings_cfg_text(cfg_text: str, gr) -> Set[Tuple]:
     """
     Run Hellings Algorithm solving reachability problem
     with given context free grammar as text and graph,
     :param cfg_text: given context free grammar text,
-    :param graph: given graph as nx graph or filename source
+    :param gr: given graph as nx graph or filename source
     :return: set of triples: starting node, Variable of given grammar in weak chomsky normal form, reachable node
     """
-    if isinstance(graph, str):
-        graph = nx.nx_pydot.read_dot(graph)
-    return run_hellings(CFG.from_text(cfg_text), graph)
+    if isinstance(gr, str):
+        gr = nx.nx_pydot.read_dot(gr)
+    return run_hellings(CFG.from_text(cfg_text), gr)
 
 
-def run_hellings_cfg_file(cfg_filename: str, graph) -> Set[Tuple]:
+def run_hellings_cfg_file(cfg_filename: str, gr) -> Set[Tuple]:
     """
     Run Hellings Algorithm solving reachability problem
     with given context free grammar as its source filename and graph,
     :param cfg_filename: given context free grammar source filename,
-    :param graph: given graph as nx graph or source filename
+    :param gr: given graph as nx graph or source filename
     :return: set of triples: starting node, Variable of given grammar in weak chomsky normal form, reachable node
     """
-    if isinstance(graph, str):
-        graph = nx.nx_pydot.read_dot(graph)
-    return run_hellings(read_cfg(cfg_filename), graph)
+    if isinstance(gr, str):
+        gr = nx.nx_pydot.read_dot(gr)
+    return run_hellings(read_cfg(cfg_filename), gr)
 
 
 def run_hellings_with_suit(
-    cfg: CFG, graph, start_nodes: List, final_nodes: List, nonterminal: Variable
+    cfg: CFG, gr, start_nodes: List, final_nodes: List, nonterminal: Variable
 ) -> Dict:
     """
     Run Hellings Algorithm solving reachability problem
     with given context free grammar, graph, start nodes and final nodes and nonterminal
     :param cfg: context free grammar
-    :param graph: given graph as nx graph or source filename
+    :param gr: given graph as nx graph or source filename
     :param start_nodes: start nodes
     :param final_nodes: final nodes
     :param nonterminal: nonterminal variable
     :return: dictionary of starting node as a key
              and set as value reachable from it if it is not empty
     """
-    if isinstance(graph, str):
-        graph = nx.nx_pydot.read_dot(graph)
+    if isinstance(gr, str):
+        gr = nx.nx_pydot.read_dot(gr)
     res = {}
-    reachable = run_hellings(cfg, graph)
+    reachable = run_hellings(cfg, gr)
     for s, label, t in reachable:
         if s in start_nodes and t in final_nodes and label == nonterminal:
             if s not in res:

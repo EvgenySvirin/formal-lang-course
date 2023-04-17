@@ -10,9 +10,9 @@ def test_hellings1():
     S -> $
     """
     )
-    graph = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
-    reachable = run_hellings(cfg, graph)
-    assert reachable == {
+    gr = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
+    reach = run_hellings(cfg, gr)
+    assert reach == {
         (1, Variable("S"), 1),
         (2, Variable("S"), 2),
         (0, Variable("S"), 1),
@@ -30,9 +30,9 @@ def test_hellings2():
     A -> a
     """
     )
-    graph = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
-    reachable = run_hellings(cfg, graph)
-    assert reachable == {
+    gr = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
+    reach = run_hellings(cfg, gr)
+    assert reach == {
         (0, Variable("S"), 1),
         (2, Variable("S"), 0),
         (1, Variable("S"), 2),
@@ -44,9 +44,9 @@ def test_hellings2():
     A -> b
     """
     )
-    graph = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
-    reachable = run_hellings(cfg, graph)
-    assert reachable == {
+    gr = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
+    reach = run_hellings(cfg, gr)
+    assert reach == {
         (4, Variable("S"), 5),
         (5, Variable("S"), 6),
         (0, Variable("S"), 4),
@@ -64,8 +64,8 @@ def test_helling_suit1():
         B -> b
         """
     )
-    g = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
-    nodes_dict = run_hellings_with_suit(cfg, g, [0, 1, 2, 3], [5, 6, 7], Variable("S"))
+    gr = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
+    nodes_dict = run_hellings_with_suit(cfg, gr, [0, 1, 2, 3], [5, 6, 7], Variable("S"))
     assert nodes_dict == {3: {5, 6, 7}}
 
 
@@ -81,10 +81,10 @@ def test_helling_suit2():
         B -> b
         """
     )
-    g = cd.labeled_two_cycles_graph(2, 2, labels=("a", "b"))
+    gr = cd.labeled_two_cycles_graph(2, 2, labels=("a", "b"))
     nodes_dict = run_hellings_with_suit(
-        cfg, g, [0, 1, 2, 3], [0, 1, 2, 3], Variable("S")
+        cfg, gr, [0, 1, 2, 3], [0, 1, 2, 3], Variable("S")
     )
     assert nodes_dict == {0: {0, 3}, 1: {0, 3}, 2: {0, 3}}
-    nodes_dict = run_hellings_with_suit(cfg, g, [0, 1], [0, 1], Variable("S"))
+    nodes_dict = run_hellings_with_suit(cfg, gr, [0, 1], [0, 1], Variable("S"))
     assert nodes_dict == {0: {0}, 1: {0}}
