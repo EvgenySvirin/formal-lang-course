@@ -1,11 +1,9 @@
 import pyformlang.finite_automaton as fa
 import pyformlang.regular_expression as re
 import networkx as nx
-from typing import AbstractSet, Dict, Tuple, Any
-from pyformlang.cfg import CFG, Variable, Terminal
+from typing import Dict, Any
+from pyformlang.cfg import Variable
 from pyformlang.finite_automaton import DeterministicFiniteAutomaton
-from pyformlang.regular_expression import Regex
-
 from project.matrices import NdfaMatrices
 
 
