@@ -20,7 +20,7 @@ def run_hellings(cfg: CFG, gr: nx.MultiDiGraph) -> Set[Tuple]:
 
     for prod in prods:
         if len(prod.body) == 0 or (
-                len(prod.body) == 1 and "$" == prod.body[0].to_text()
+            len(prod.body) == 1 and "$" == prod.body[0].to_text()
         ):
             for node in gr.nodes:
                 reach.add((node, prod.head, node))
@@ -95,7 +95,7 @@ def run_matrix(cfg: CFG, gr: nx.MultiDiGraph) -> Set[Tuple]:
 
     for prod in prods:
         if len(prod.body) == 0 or (
-                len(prod.body) == 1 and "$" == prod.body[0].to_text()
+            len(prod.body) == 1 and "$" == prod.body[0].to_text()
         ):
             for i in range(nodes_amount):
                 var_matrix[prod.head][i, i] = True
@@ -116,8 +116,10 @@ def run_matrix(cfg: CFG, gr: nx.MultiDiGraph) -> Set[Tuple]:
                 for k in range(nodes_amount):
                     for e in range(nodes_amount):
                         if (
-                                var_matrix[left_var][i, k] and var_matrix[right_var][k, e]
-                                and not var_matrix[prod.head][i, e]):
+                            var_matrix[left_var][i, k]
+                            and var_matrix[right_var][k, e]
+                            and not var_matrix[prod.head][i, e]
+                        ):
                             found_new_transition = True
                             var_matrix[prod.head][i, e] = True
 
@@ -190,8 +192,14 @@ def run_algorithm(cfg: CFG, gr, algorithm_name: str = "hellings") -> Set:
     return algorithm(cfg, gr)
 
 
-def run_algorithm_with_conditions(cfg: CFG, gr, start_nodes: List, final_nodes: List,
-                                  nonterminal: Variable, algorithm_name: str = "hellings") -> Dict:
+def run_algorithm_with_conditions(
+    cfg: CFG,
+    gr,
+    start_nodes: List,
+    final_nodes: List,
+    nonterminal: Variable,
+    algorithm_name: str = "hellings",
+) -> Dict:
     """
     Run Hellings or Matrix Algorithm solving reachability problem
     with given context free grammar, graph, start nodes and final nodes and nonterminal

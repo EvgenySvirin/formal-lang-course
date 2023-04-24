@@ -66,7 +66,9 @@ def test_helling_suit1():
         """
     )
     gr = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
-    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1, 2, 3], [5, 6, 7], Variable("S"), "hellings")
+    nodes_dict = run_algorithm_with_conditions(
+        cfg, gr, [0, 1, 2, 3], [5, 6, 7], Variable("S"), "hellings"
+    )
     assert nodes_dict == {3: {5, 6, 7}}
 
 
@@ -87,5 +89,7 @@ def test_helling_suit2():
         cfg, gr, [0, 1, 2, 3], [0, 1, 2, 3], Variable("S"), "hellings"
     )
     assert nodes_dict == {0: {0, 3}, 1: {0, 3}, 2: {0, 3}}
-    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1], [0, 1], Variable("S"), "hellings")
+    nodes_dict = run_algorithm_with_conditions(
+        cfg, gr, [0, 1], [0, 1], Variable("S"), "hellings"
+    )
     assert nodes_dict == {0: {0}, 1: {0}}
