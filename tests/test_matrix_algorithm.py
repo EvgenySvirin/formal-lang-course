@@ -1,9 +1,8 @@
-from project.grammars import *
 from project.cfpq import *
 import cfpq_data as cd
 
 
-def test_hellings1():
+def test_matrix1():
     cfg = CFG.from_text(
         """
     S -> A
@@ -12,7 +11,7 @@ def test_hellings1():
     """
     )
     gr = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
-    reach = run_hellings(cfg, gr)
+    reach = run_matrix(cfg, gr)
     assert reach == {
         (1, Variable("S"), 1),
         (2, Variable("S"), 2),
@@ -24,7 +23,7 @@ def test_hellings1():
     }
 
 
-def test_hellings2():
+def test_matrix2():
     cfg = CFG.from_text(
         """
     S -> A
@@ -32,7 +31,7 @@ def test_hellings2():
     """
     )
     gr = cd.labeled_two_cycles_graph(2, 1, labels=("a", "b"))
-    reach = run_hellings(cfg, gr)
+    reach = run_matrix(cfg, gr)
     assert reach == {
         (0, Variable("S"), 1),
         (2, Variable("S"), 0),
@@ -46,7 +45,7 @@ def test_hellings2():
     """
     )
     gr = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
-    reach = run_hellings(cfg, gr)
+    reach = run_matrix(cfg, gr)
     assert reach == {
         (4, Variable("S"), 5),
         (5, Variable("S"), 6),
@@ -56,7 +55,7 @@ def test_hellings2():
     }
 
 
-def test_helling_suit1():
+def test_matrix_suit1():
     cfg = CFG.from_text(
         """
         S -> A B
@@ -66,11 +65,11 @@ def test_helling_suit1():
         """
     )
     gr = cd.labeled_two_cycles_graph(3, 4, labels=("a", "b"))
-    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1, 2, 3], [5, 6, 7], Variable("S"), "hellings")
+    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1, 2, 3], [5, 6, 7], Variable("S"), "matrix")
     assert nodes_dict == {3: {5, 6, 7}}
 
 
-def test_helling_suit2():
+def test_matrix_suit2():
     cfg = CFG.from_text(
         """
         S -> A B
@@ -84,8 +83,7 @@ def test_helling_suit2():
     )
     gr = cd.labeled_two_cycles_graph(2, 2, labels=("a", "b"))
     nodes_dict = run_algorithm_with_conditions(
-        cfg, gr, [0, 1, 2, 3], [0, 1, 2, 3], Variable("S"), "hellings"
-    )
+        cfg, gr, [0, 1, 2, 3], [0, 1, 2, 3], Variable("S"), "matrix")
     assert nodes_dict == {0: {0, 3}, 1: {0, 3}, 2: {0, 3}}
-    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1], [0, 1], Variable("S"), "hellings")
+    nodes_dict = run_algorithm_with_conditions(cfg, gr, [0, 1], [0, 1], Variable("S"), "matrix")
     assert nodes_dict == {0: {0}, 1: {0}}
