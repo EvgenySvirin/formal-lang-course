@@ -36,7 +36,6 @@ VARNAME = (_*)([a-zA-Z]+)([a-zA-Z_0-9]*);
 INT = [0-9]+;
 STRING = '"' .* '"';
 SET = '{' '}' | '{' val (',' val)* '}' | '{' INT '..' INT '}';
-TUPLE: (val | var) | '(' tuple (',' tuple)* ')';
+TUPLE: '(' (val | var | tuple)  (',' tuple)* ')';
 lambda: 'lambda' (var | var_tuple) '->' expr;
-var_tuple: var | '(' var_tuple (',' var_tuple)* ')';
 ```
