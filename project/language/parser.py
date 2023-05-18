@@ -6,6 +6,7 @@ from project.language.antlr.GQLanguageParser import GQLanguageParser
 from project.language.antlr.GQLanguageListener import GQLanguageListener
 import networkx as nx
 
+
 def parse_stream(stream: InputStream) -> GQLanguageParser:
     """
     Creates parser of stream
@@ -44,7 +45,9 @@ def is_correct_syntax_file(filename: str):
     @param filename: file of program
     @return: true or false
     """
-    return is_correct_syntax_stream(antlr4.InputStream("".join(open(filename).readlines())))
+    return is_correct_syntax_stream(
+        antlr4.InputStream("".join(open(filename).readlines()))
+    )
 
 
 def get_dot_syntax(inp: InputStream, filename: str):
@@ -77,7 +80,9 @@ def get_dot_syntax_file(input_filename: str, filename: str):
     @param input_filename: file with program code in it
     @param filename: file name
     """
-    get_dot_syntax(antlr4.InputStream("".join(open(input_filename).readlines())), filename)
+    get_dot_syntax(
+        antlr4.InputStream("".join(open(input_filename).readlines())), filename
+    )
 
 
 class GraphCreator(GQLanguageListener):
@@ -102,5 +107,3 @@ class GraphCreator(GQLanguageListener):
 
     def exitEveryRule(self, ctx: antlr4.ParserRuleContext):
         self.l.pop()
-
-

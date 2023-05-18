@@ -1,14 +1,13 @@
 antlr4-python3-runtime
 antlr4-tools
+ATN=4.8
 black
 cfpq-data
 networkx~=2.6.2
 pre-commit
 pydot
-python:3.11.6
-java=11
-ATN=4.8
 pyformlang~=1.0.1
 pyparsing<=3.0.1
 pytest~=7.2.1
+python:3.11.6
 scipy

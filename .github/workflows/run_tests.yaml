@@ -37,13 +37,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-          
+
       - name: InstallJava11
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
-          
+
       # Install requirements
       - name: Install requirements
         # Runs command-line programs using the operating system's shell
@@ -51,8 +51,8 @@ jobs:
           python -m pip install --upgrade pip wheel setuptools
           python -m pip install -r requirements.txt
           python -m pip list
-          
-          
+
+
         # Create antlr files
       - name: Set up antlr
         run: |
