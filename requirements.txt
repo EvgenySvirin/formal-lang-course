@@ -8,5 +8,4 @@ pydot
 pyformlang~=1.0.1
 pyparsing<=3.0.1
 pytest~=7.2.1
-python:3.11.6
 scipy
