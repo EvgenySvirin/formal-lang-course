@@ -57,7 +57,7 @@ jobs:
       - name: Set up antlr
         working-directory: project/language
         run: |
-          antlr4 -Dlanguage=Python3 Language.g4 -o antlr -visitor
+           antlr4 -Dlanguage=Python3 GQLanguage.g4 -o antlr -visitor
 
         # Runs tests
       - name: Run tests
