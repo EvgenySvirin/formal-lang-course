@@ -57,7 +57,7 @@ jobs:
       - name: Set up antlr
         run: |
           cd project
-          antlr4 -Dlanguage=Python3 Language.g4 -o antlr_out -visitor
+          antlr4 -Dlanguage=Python3 Language.g4 -o antlr -visitor
 
         # Runs tests
       - name: Run tests
