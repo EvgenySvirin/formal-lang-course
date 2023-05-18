@@ -50,12 +50,37 @@ def is_correct_syntax_file(filename: str):
     )
 
 
+class GraphCreator(GQLanguageListener):
+    def __init__(self, filename):
+        self.dot = pydot.Dot(filename)
+        self.node = 1
+        self.l = [0]
+
+    def visitTerminal(self, node: antlr4.TerminalNode):
+        self.dot.add_node(pydot.Node(self.node, label=f"'{node}'"))
+        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
+        self.node += 1
+
+    def enterEveryRule(self, ctx: antlr4.ParserRuleContext):
+        self.dot.add_node(
+            pydot.Node(self.node, label=GQLanguageParser.ruleNames[ctx.getRuleIndex()])
+        )
+        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
+
+        self.l.append(self.node)
+        self.node += 1
+
+    def exitEveryRule(self, ctx: antlr4.ParserRuleContext):
+        self.l.pop()
+
+
 def get_dot_syntax(inp: InputStream, filename: str):
     """
     Create parse tree and save it to dot file
     @param inp: stream of program
     @param filename: file name
     """
+
     parser = parse_stream(inp)
     if parser.getNumberOfSyntaxErrors():
         print("Syntax error")
@@ -83,27 +108,3 @@ def get_dot_syntax_file(input_filename: str, filename: str):
     get_dot_syntax(
         antlr4.InputStream("".join(open(input_filename).readlines())), filename
     )
-
-
-class GraphCreator(GQLanguageListener):
-    def __init__(self, filename):
-        self.dot = pydot.Dot(filename)
-        self.node = 1
-        self.l = [0]
-
-    def visitTerminal(self, node: antlr4.TerminalNode):
-        self.dot.add_node(pydot.Node(self.node, label=f"'{node}'"))
-        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
-        self.node += 1
-
-    def enterEveryRule(self, ctx: antlr4.ParserRuleContext):
-        self.dot.add_node(
-            pydot.Node(self.node, label=GQLanguageParser.ruleNames[ctx.getRuleIndex()])
-        )
-        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
-
-        self.l.append(self.node)
-        self.node += 1
-
-    def exitEveryRule(self, ctx: antlr4.ParserRuleContext):
-        self.l.pop()
