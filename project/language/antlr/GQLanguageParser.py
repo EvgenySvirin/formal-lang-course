@@ -3,104 +3,1696 @@
 from antlr4 import *
 from io import StringIO
 import sys
+
 if sys.version_info[1] > 5:
-	from typing import TextIO
+    from typing import TextIO
 else:
-	from typing.io import TextIO
+    from typing.io import TextIO
+
 
 def serializedATN():
     return [
-        4,1,40,174,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
-        6,2,7,7,7,2,8,7,8,2,9,7,9,1,0,1,0,1,0,5,0,24,8,0,10,0,12,0,27,9,
-        0,1,0,1,0,1,1,1,1,3,1,33,8,1,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,4,
-        1,4,1,5,1,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,
-        1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,
-        1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,
-        1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,
-        3,6,108,8,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,5,6,
-        122,8,6,10,6,12,6,125,9,6,1,7,1,7,1,7,1,7,1,7,1,7,5,7,133,8,7,10,
-        7,12,7,136,9,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,145,8,7,1,8,1,8,1,
-        8,3,8,150,8,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,159,8,9,1,9,1,9,1,
-        9,1,9,3,9,165,8,9,5,9,167,8,9,10,9,12,9,170,9,9,1,9,1,9,1,9,0,1,
-        12,10,0,2,4,6,8,10,12,14,16,18,0,1,1,0,36,38,198,0,25,1,0,0,0,2,
-        32,1,0,0,0,4,34,1,0,0,0,6,39,1,0,0,0,8,42,1,0,0,0,10,44,1,0,0,0,
-        12,107,1,0,0,0,14,144,1,0,0,0,16,146,1,0,0,0,18,154,1,0,0,0,20,21,
-        3,2,1,0,21,22,5,1,0,0,22,24,1,0,0,0,23,20,1,0,0,0,24,27,1,0,0,0,
-        25,23,1,0,0,0,25,26,1,0,0,0,26,28,1,0,0,0,27,25,1,0,0,0,28,29,5,
-        0,0,1,29,1,1,0,0,0,30,33,3,4,2,0,31,33,3,6,3,0,32,30,1,0,0,0,32,
-        31,1,0,0,0,33,3,1,0,0,0,34,35,5,2,0,0,35,36,3,8,4,0,36,37,5,3,0,
-        0,37,38,3,12,6,0,38,5,1,0,0,0,39,40,5,4,0,0,40,41,3,12,6,0,41,7,
-        1,0,0,0,42,43,5,35,0,0,43,9,1,0,0,0,44,45,7,0,0,0,45,11,1,0,0,0,
-        46,47,6,6,-1,0,47,108,3,8,4,0,48,108,3,10,5,0,49,50,5,5,0,0,50,51,
-        3,12,6,0,51,52,5,6,0,0,52,108,1,0,0,0,53,54,5,7,0,0,54,55,3,12,6,
-        0,55,56,5,8,0,0,56,57,3,12,6,22,57,108,1,0,0,0,58,59,5,9,0,0,59,
-        60,3,12,6,0,60,61,5,8,0,0,61,62,3,12,6,21,62,108,1,0,0,0,63,64,5,
-        10,0,0,64,65,3,12,6,0,65,66,5,11,0,0,66,67,3,12,6,20,67,108,1,0,
-        0,0,68,69,5,12,0,0,69,70,3,12,6,0,70,71,5,11,0,0,71,72,3,12,6,19,
-        72,108,1,0,0,0,73,74,5,13,0,0,74,108,3,12,6,18,75,76,5,14,0,0,76,
-        108,3,12,6,17,77,78,5,15,0,0,78,108,3,12,6,16,79,80,5,16,0,0,80,
-        108,3,12,6,15,81,82,5,17,0,0,82,108,3,12,6,14,83,84,5,18,0,0,84,
-        108,3,12,6,13,85,86,5,19,0,0,86,87,3,12,6,0,87,88,5,20,0,0,88,89,
-        3,12,6,12,89,108,1,0,0,0,90,91,5,21,0,0,91,92,3,12,6,0,92,93,5,20,
-        0,0,93,94,3,12,6,11,94,108,1,0,0,0,95,96,5,22,0,0,96,108,3,12,6,
-        10,97,98,5,26,0,0,98,108,3,12,6,6,99,100,5,27,0,0,100,101,3,12,6,
-        0,101,102,5,20,0,0,102,103,3,12,6,5,103,108,1,0,0,0,104,108,3,14,
-        7,0,105,108,3,16,8,0,106,108,3,18,9,0,107,46,1,0,0,0,107,48,1,0,
-        0,0,107,49,1,0,0,0,107,53,1,0,0,0,107,58,1,0,0,0,107,63,1,0,0,0,
-        107,68,1,0,0,0,107,73,1,0,0,0,107,75,1,0,0,0,107,77,1,0,0,0,107,
-        79,1,0,0,0,107,81,1,0,0,0,107,83,1,0,0,0,107,85,1,0,0,0,107,90,1,
-        0,0,0,107,95,1,0,0,0,107,97,1,0,0,0,107,99,1,0,0,0,107,104,1,0,0,
-        0,107,105,1,0,0,0,107,106,1,0,0,0,108,123,1,0,0,0,109,110,10,9,0,
-        0,110,111,5,23,0,0,111,122,3,12,6,10,112,113,10,8,0,0,113,114,5,
-        24,0,0,114,122,3,12,6,9,115,116,10,7,0,0,116,117,5,25,0,0,117,122,
-        3,12,6,8,118,119,10,4,0,0,119,120,5,28,0,0,120,122,3,12,6,5,121,
-        109,1,0,0,0,121,112,1,0,0,0,121,115,1,0,0,0,121,118,1,0,0,0,122,
-        125,1,0,0,0,123,121,1,0,0,0,123,124,1,0,0,0,124,13,1,0,0,0,125,123,
-        1,0,0,0,126,127,5,29,0,0,127,145,5,30,0,0,128,129,5,29,0,0,129,134,
-        3,12,6,0,130,131,5,31,0,0,131,133,3,12,6,0,132,130,1,0,0,0,133,136,
-        1,0,0,0,134,132,1,0,0,0,134,135,1,0,0,0,135,137,1,0,0,0,136,134,
-        1,0,0,0,137,138,5,30,0,0,138,145,1,0,0,0,139,140,5,29,0,0,140,141,
-        5,37,0,0,141,142,5,32,0,0,142,143,5,37,0,0,143,145,5,30,0,0,144,
-        126,1,0,0,0,144,128,1,0,0,0,144,139,1,0,0,0,145,15,1,0,0,0,146,149,
-        5,33,0,0,147,150,3,8,4,0,148,150,3,18,9,0,149,147,1,0,0,0,149,148,
-        1,0,0,0,150,151,1,0,0,0,151,152,5,34,0,0,152,153,3,12,6,0,153,17,
-        1,0,0,0,154,158,5,5,0,0,155,159,3,8,4,0,156,159,3,10,5,0,157,159,
-        3,18,9,0,158,155,1,0,0,0,158,156,1,0,0,0,158,157,1,0,0,0,159,168,
-        1,0,0,0,160,164,5,31,0,0,161,165,3,8,4,0,162,165,3,10,5,0,163,165,
-        3,18,9,0,164,161,1,0,0,0,164,162,1,0,0,0,164,163,1,0,0,0,165,167,
-        1,0,0,0,166,160,1,0,0,0,167,170,1,0,0,0,168,166,1,0,0,0,168,169,
-        1,0,0,0,169,171,1,0,0,0,170,168,1,0,0,0,171,172,5,6,0,0,172,19,1,
-        0,0,0,11,25,32,107,121,123,134,144,149,158,164,168
+        4,
+        1,
+        40,
+        174,
+        2,
+        0,
+        7,
+        0,
+        2,
+        1,
+        7,
+        1,
+        2,
+        2,
+        7,
+        2,
+        2,
+        3,
+        7,
+        3,
+        2,
+        4,
+        7,
+        4,
+        2,
+        5,
+        7,
+        5,
+        2,
+        6,
+        7,
+        6,
+        2,
+        7,
+        7,
+        7,
+        2,
+        8,
+        7,
+        8,
+        2,
+        9,
+        7,
+        9,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        5,
+        0,
+        24,
+        8,
+        0,
+        10,
+        0,
+        12,
+        0,
+        27,
+        9,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        33,
+        8,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        4,
+        1,
+        4,
+        1,
+        5,
+        1,
+        5,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        3,
+        6,
+        108,
+        8,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        1,
+        6,
+        5,
+        6,
+        122,
+        8,
+        6,
+        10,
+        6,
+        12,
+        6,
+        125,
+        9,
+        6,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        5,
+        7,
+        133,
+        8,
+        7,
+        10,
+        7,
+        12,
+        7,
+        136,
+        9,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        1,
+        7,
+        3,
+        7,
+        145,
+        8,
+        7,
+        1,
+        8,
+        1,
+        8,
+        1,
+        8,
+        3,
+        8,
+        150,
+        8,
+        8,
+        1,
+        8,
+        1,
+        8,
+        1,
+        8,
+        1,
+        9,
+        1,
+        9,
+        1,
+        9,
+        1,
+        9,
+        3,
+        9,
+        159,
+        8,
+        9,
+        1,
+        9,
+        1,
+        9,
+        1,
+        9,
+        1,
+        9,
+        3,
+        9,
+        165,
+        8,
+        9,
+        5,
+        9,
+        167,
+        8,
+        9,
+        10,
+        9,
+        12,
+        9,
+        170,
+        9,
+        9,
+        1,
+        9,
+        1,
+        9,
+        1,
+        9,
+        0,
+        1,
+        12,
+        10,
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        0,
+        1,
+        1,
+        0,
+        36,
+        38,
+        198,
+        0,
+        25,
+        1,
+        0,
+        0,
+        0,
+        2,
+        32,
+        1,
+        0,
+        0,
+        0,
+        4,
+        34,
+        1,
+        0,
+        0,
+        0,
+        6,
+        39,
+        1,
+        0,
+        0,
+        0,
+        8,
+        42,
+        1,
+        0,
+        0,
+        0,
+        10,
+        44,
+        1,
+        0,
+        0,
+        0,
+        12,
+        107,
+        1,
+        0,
+        0,
+        0,
+        14,
+        144,
+        1,
+        0,
+        0,
+        0,
+        16,
+        146,
+        1,
+        0,
+        0,
+        0,
+        18,
+        154,
+        1,
+        0,
+        0,
+        0,
+        20,
+        21,
+        3,
+        2,
+        1,
+        0,
+        21,
+        22,
+        5,
+        1,
+        0,
+        0,
+        22,
+        24,
+        1,
+        0,
+        0,
+        0,
+        23,
+        20,
+        1,
+        0,
+        0,
+        0,
+        24,
+        27,
+        1,
+        0,
+        0,
+        0,
+        25,
+        23,
+        1,
+        0,
+        0,
+        0,
+        25,
+        26,
+        1,
+        0,
+        0,
+        0,
+        26,
+        28,
+        1,
+        0,
+        0,
+        0,
+        27,
+        25,
+        1,
+        0,
+        0,
+        0,
+        28,
+        29,
+        5,
+        0,
+        0,
+        1,
+        29,
+        1,
+        1,
+        0,
+        0,
+        0,
+        30,
+        33,
+        3,
+        4,
+        2,
+        0,
+        31,
+        33,
+        3,
+        6,
+        3,
+        0,
+        32,
+        30,
+        1,
+        0,
+        0,
+        0,
+        32,
+        31,
+        1,
+        0,
+        0,
+        0,
+        33,
+        3,
+        1,
+        0,
+        0,
+        0,
+        34,
+        35,
+        5,
+        2,
+        0,
+        0,
+        35,
+        36,
+        3,
+        8,
+        4,
+        0,
+        36,
+        37,
+        5,
+        3,
+        0,
+        0,
+        37,
+        38,
+        3,
+        12,
+        6,
+        0,
+        38,
+        5,
+        1,
+        0,
+        0,
+        0,
+        39,
+        40,
+        5,
+        4,
+        0,
+        0,
+        40,
+        41,
+        3,
+        12,
+        6,
+        0,
+        41,
+        7,
+        1,
+        0,
+        0,
+        0,
+        42,
+        43,
+        5,
+        35,
+        0,
+        0,
+        43,
+        9,
+        1,
+        0,
+        0,
+        0,
+        44,
+        45,
+        7,
+        0,
+        0,
+        0,
+        45,
+        11,
+        1,
+        0,
+        0,
+        0,
+        46,
+        47,
+        6,
+        6,
+        -1,
+        0,
+        47,
+        108,
+        3,
+        8,
+        4,
+        0,
+        48,
+        108,
+        3,
+        10,
+        5,
+        0,
+        49,
+        50,
+        5,
+        5,
+        0,
+        0,
+        50,
+        51,
+        3,
+        12,
+        6,
+        0,
+        51,
+        52,
+        5,
+        6,
+        0,
+        0,
+        52,
+        108,
+        1,
+        0,
+        0,
+        0,
+        53,
+        54,
+        5,
+        7,
+        0,
+        0,
+        54,
+        55,
+        3,
+        12,
+        6,
+        0,
+        55,
+        56,
+        5,
+        8,
+        0,
+        0,
+        56,
+        57,
+        3,
+        12,
+        6,
+        22,
+        57,
+        108,
+        1,
+        0,
+        0,
+        0,
+        58,
+        59,
+        5,
+        9,
+        0,
+        0,
+        59,
+        60,
+        3,
+        12,
+        6,
+        0,
+        60,
+        61,
+        5,
+        8,
+        0,
+        0,
+        61,
+        62,
+        3,
+        12,
+        6,
+        21,
+        62,
+        108,
+        1,
+        0,
+        0,
+        0,
+        63,
+        64,
+        5,
+        10,
+        0,
+        0,
+        64,
+        65,
+        3,
+        12,
+        6,
+        0,
+        65,
+        66,
+        5,
+        11,
+        0,
+        0,
+        66,
+        67,
+        3,
+        12,
+        6,
+        20,
+        67,
+        108,
+        1,
+        0,
+        0,
+        0,
+        68,
+        69,
+        5,
+        12,
+        0,
+        0,
+        69,
+        70,
+        3,
+        12,
+        6,
+        0,
+        70,
+        71,
+        5,
+        11,
+        0,
+        0,
+        71,
+        72,
+        3,
+        12,
+        6,
+        19,
+        72,
+        108,
+        1,
+        0,
+        0,
+        0,
+        73,
+        74,
+        5,
+        13,
+        0,
+        0,
+        74,
+        108,
+        3,
+        12,
+        6,
+        18,
+        75,
+        76,
+        5,
+        14,
+        0,
+        0,
+        76,
+        108,
+        3,
+        12,
+        6,
+        17,
+        77,
+        78,
+        5,
+        15,
+        0,
+        0,
+        78,
+        108,
+        3,
+        12,
+        6,
+        16,
+        79,
+        80,
+        5,
+        16,
+        0,
+        0,
+        80,
+        108,
+        3,
+        12,
+        6,
+        15,
+        81,
+        82,
+        5,
+        17,
+        0,
+        0,
+        82,
+        108,
+        3,
+        12,
+        6,
+        14,
+        83,
+        84,
+        5,
+        18,
+        0,
+        0,
+        84,
+        108,
+        3,
+        12,
+        6,
+        13,
+        85,
+        86,
+        5,
+        19,
+        0,
+        0,
+        86,
+        87,
+        3,
+        12,
+        6,
+        0,
+        87,
+        88,
+        5,
+        20,
+        0,
+        0,
+        88,
+        89,
+        3,
+        12,
+        6,
+        12,
+        89,
+        108,
+        1,
+        0,
+        0,
+        0,
+        90,
+        91,
+        5,
+        21,
+        0,
+        0,
+        91,
+        92,
+        3,
+        12,
+        6,
+        0,
+        92,
+        93,
+        5,
+        20,
+        0,
+        0,
+        93,
+        94,
+        3,
+        12,
+        6,
+        11,
+        94,
+        108,
+        1,
+        0,
+        0,
+        0,
+        95,
+        96,
+        5,
+        22,
+        0,
+        0,
+        96,
+        108,
+        3,
+        12,
+        6,
+        10,
+        97,
+        98,
+        5,
+        26,
+        0,
+        0,
+        98,
+        108,
+        3,
+        12,
+        6,
+        6,
+        99,
+        100,
+        5,
+        27,
+        0,
+        0,
+        100,
+        101,
+        3,
+        12,
+        6,
+        0,
+        101,
+        102,
+        5,
+        20,
+        0,
+        0,
+        102,
+        103,
+        3,
+        12,
+        6,
+        5,
+        103,
+        108,
+        1,
+        0,
+        0,
+        0,
+        104,
+        108,
+        3,
+        14,
+        7,
+        0,
+        105,
+        108,
+        3,
+        16,
+        8,
+        0,
+        106,
+        108,
+        3,
+        18,
+        9,
+        0,
+        107,
+        46,
+        1,
+        0,
+        0,
+        0,
+        107,
+        48,
+        1,
+        0,
+        0,
+        0,
+        107,
+        49,
+        1,
+        0,
+        0,
+        0,
+        107,
+        53,
+        1,
+        0,
+        0,
+        0,
+        107,
+        58,
+        1,
+        0,
+        0,
+        0,
+        107,
+        63,
+        1,
+        0,
+        0,
+        0,
+        107,
+        68,
+        1,
+        0,
+        0,
+        0,
+        107,
+        73,
+        1,
+        0,
+        0,
+        0,
+        107,
+        75,
+        1,
+        0,
+        0,
+        0,
+        107,
+        77,
+        1,
+        0,
+        0,
+        0,
+        107,
+        79,
+        1,
+        0,
+        0,
+        0,
+        107,
+        81,
+        1,
+        0,
+        0,
+        0,
+        107,
+        83,
+        1,
+        0,
+        0,
+        0,
+        107,
+        85,
+        1,
+        0,
+        0,
+        0,
+        107,
+        90,
+        1,
+        0,
+        0,
+        0,
+        107,
+        95,
+        1,
+        0,
+        0,
+        0,
+        107,
+        97,
+        1,
+        0,
+        0,
+        0,
+        107,
+        99,
+        1,
+        0,
+        0,
+        0,
+        107,
+        104,
+        1,
+        0,
+        0,
+        0,
+        107,
+        105,
+        1,
+        0,
+        0,
+        0,
+        107,
+        106,
+        1,
+        0,
+        0,
+        0,
+        108,
+        123,
+        1,
+        0,
+        0,
+        0,
+        109,
+        110,
+        10,
+        9,
+        0,
+        0,
+        110,
+        111,
+        5,
+        23,
+        0,
+        0,
+        111,
+        122,
+        3,
+        12,
+        6,
+        10,
+        112,
+        113,
+        10,
+        8,
+        0,
+        0,
+        113,
+        114,
+        5,
+        24,
+        0,
+        0,
+        114,
+        122,
+        3,
+        12,
+        6,
+        9,
+        115,
+        116,
+        10,
+        7,
+        0,
+        0,
+        116,
+        117,
+        5,
+        25,
+        0,
+        0,
+        117,
+        122,
+        3,
+        12,
+        6,
+        8,
+        118,
+        119,
+        10,
+        4,
+        0,
+        0,
+        119,
+        120,
+        5,
+        28,
+        0,
+        0,
+        120,
+        122,
+        3,
+        12,
+        6,
+        5,
+        121,
+        109,
+        1,
+        0,
+        0,
+        0,
+        121,
+        112,
+        1,
+        0,
+        0,
+        0,
+        121,
+        115,
+        1,
+        0,
+        0,
+        0,
+        121,
+        118,
+        1,
+        0,
+        0,
+        0,
+        122,
+        125,
+        1,
+        0,
+        0,
+        0,
+        123,
+        121,
+        1,
+        0,
+        0,
+        0,
+        123,
+        124,
+        1,
+        0,
+        0,
+        0,
+        124,
+        13,
+        1,
+        0,
+        0,
+        0,
+        125,
+        123,
+        1,
+        0,
+        0,
+        0,
+        126,
+        127,
+        5,
+        29,
+        0,
+        0,
+        127,
+        145,
+        5,
+        30,
+        0,
+        0,
+        128,
+        129,
+        5,
+        29,
+        0,
+        0,
+        129,
+        134,
+        3,
+        12,
+        6,
+        0,
+        130,
+        131,
+        5,
+        31,
+        0,
+        0,
+        131,
+        133,
+        3,
+        12,
+        6,
+        0,
+        132,
+        130,
+        1,
+        0,
+        0,
+        0,
+        133,
+        136,
+        1,
+        0,
+        0,
+        0,
+        134,
+        132,
+        1,
+        0,
+        0,
+        0,
+        134,
+        135,
+        1,
+        0,
+        0,
+        0,
+        135,
+        137,
+        1,
+        0,
+        0,
+        0,
+        136,
+        134,
+        1,
+        0,
+        0,
+        0,
+        137,
+        138,
+        5,
+        30,
+        0,
+        0,
+        138,
+        145,
+        1,
+        0,
+        0,
+        0,
+        139,
+        140,
+        5,
+        29,
+        0,
+        0,
+        140,
+        141,
+        5,
+        37,
+        0,
+        0,
+        141,
+        142,
+        5,
+        32,
+        0,
+        0,
+        142,
+        143,
+        5,
+        37,
+        0,
+        0,
+        143,
+        145,
+        5,
+        30,
+        0,
+        0,
+        144,
+        126,
+        1,
+        0,
+        0,
+        0,
+        144,
+        128,
+        1,
+        0,
+        0,
+        0,
+        144,
+        139,
+        1,
+        0,
+        0,
+        0,
+        145,
+        15,
+        1,
+        0,
+        0,
+        0,
+        146,
+        149,
+        5,
+        33,
+        0,
+        0,
+        147,
+        150,
+        3,
+        8,
+        4,
+        0,
+        148,
+        150,
+        3,
+        18,
+        9,
+        0,
+        149,
+        147,
+        1,
+        0,
+        0,
+        0,
+        149,
+        148,
+        1,
+        0,
+        0,
+        0,
+        150,
+        151,
+        1,
+        0,
+        0,
+        0,
+        151,
+        152,
+        5,
+        34,
+        0,
+        0,
+        152,
+        153,
+        3,
+        12,
+        6,
+        0,
+        153,
+        17,
+        1,
+        0,
+        0,
+        0,
+        154,
+        158,
+        5,
+        5,
+        0,
+        0,
+        155,
+        159,
+        3,
+        8,
+        4,
+        0,
+        156,
+        159,
+        3,
+        10,
+        5,
+        0,
+        157,
+        159,
+        3,
+        18,
+        9,
+        0,
+        158,
+        155,
+        1,
+        0,
+        0,
+        0,
+        158,
+        156,
+        1,
+        0,
+        0,
+        0,
+        158,
+        157,
+        1,
+        0,
+        0,
+        0,
+        159,
+        168,
+        1,
+        0,
+        0,
+        0,
+        160,
+        164,
+        5,
+        31,
+        0,
+        0,
+        161,
+        165,
+        3,
+        8,
+        4,
+        0,
+        162,
+        165,
+        3,
+        10,
+        5,
+        0,
+        163,
+        165,
+        3,
+        18,
+        9,
+        0,
+        164,
+        161,
+        1,
+        0,
+        0,
+        0,
+        164,
+        162,
+        1,
+        0,
+        0,
+        0,
+        164,
+        163,
+        1,
+        0,
+        0,
+        0,
+        165,
+        167,
+        1,
+        0,
+        0,
+        0,
+        166,
+        160,
+        1,
+        0,
+        0,
+        0,
+        167,
+        170,
+        1,
+        0,
+        0,
+        0,
+        168,
+        166,
+        1,
+        0,
+        0,
+        0,
+        168,
+        169,
+        1,
+        0,
+        0,
+        0,
+        169,
+        171,
+        1,
+        0,
+        0,
+        0,
+        170,
+        168,
+        1,
+        0,
+        0,
+        0,
+        171,
+        172,
+        5,
+        6,
+        0,
+        0,
+        172,
+        19,
+        1,
+        0,
+        0,
+        0,
+        11,
+        25,
+        32,
+        107,
+        121,
+        123,
+        134,
+        144,
+        149,
+        158,
+        164,
+        168,
     ]
 
-class GQLanguageParser ( Parser ):
+
+class GQLanguageParser(Parser):
 
     grammarFileName = "GQLanguage.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "';'", "'let'", "'='", "'print'", "'('", 
-                     "')'", "'set_start'", "'in'", "'set_final'", "'add_start'", 
-                     "'to'", "'add_final'", "'get_start'", "'get_final'", 
-                     "'get_reachable'", "'get_vertices'", "'get_edges'", 
-                     "'get_labels'", "'map'", "'use'", "'filter'", "'load'", 
-                     "'and'", "'++'", "'or'", "'closure'", "'step'", "'contains'", 
-                     "'{'", "'}'", "','", "'..'", "'lambda'", "'->'" ]
+    literalNames = [
+        "<INVALID>",
+        "';'",
+        "'let'",
+        "'='",
+        "'print'",
+        "'('",
+        "')'",
+        "'set_start'",
+        "'in'",
+        "'set_final'",
+        "'add_start'",
+        "'to'",
+        "'add_final'",
+        "'get_start'",
+        "'get_final'",
+        "'get_reachable'",
+        "'get_vertices'",
+        "'get_edges'",
+        "'get_labels'",
+        "'map'",
+        "'use'",
+        "'filter'",
+        "'load'",
+        "'and'",
+        "'++'",
+        "'or'",
+        "'closure'",
+        "'step'",
+        "'contains'",
+        "'{'",
+        "'}'",
+        "','",
+        "'..'",
+        "'lambda'",
+        "'->'",
+    ]
 
-    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "VARNAME", 
-                      "BOOL", "INT", "STRING", "COMMENT", "WS" ]
+    symbolicNames = [
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "<INVALID>",
+        "VARNAME",
+        "BOOL",
+        "INT",
+        "STRING",
+        "COMMENT",
+        "WS",
+    ]
 
     RULE_prog = 0
     RULE_stmt = 1
@@ -113,108 +1705,115 @@ class GQLanguageParser ( Parser ):
     RULE_lambda = 8
     RULE_tuple = 9
 
-    ruleNames =  [ "prog", "stmt", "bind", "print", "var", "val", "expr", 
-                   "set", "lambda", "tuple" ]
+    ruleNames = [
+        "prog",
+        "stmt",
+        "bind",
+        "print",
+        "var",
+        "val",
+        "expr",
+        "set",
+        "lambda",
+        "tuple",
+    ]
 
     EOF = Token.EOF
-    T__0=1
-    T__1=2
-    T__2=3
-    T__3=4
-    T__4=5
-    T__5=6
-    T__6=7
-    T__7=8
-    T__8=9
-    T__9=10
-    T__10=11
-    T__11=12
-    T__12=13
-    T__13=14
-    T__14=15
-    T__15=16
-    T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    T__21=22
-    T__22=23
-    T__23=24
-    T__24=25
-    T__25=26
-    T__26=27
-    T__27=28
-    T__28=29
-    T__29=30
-    T__30=31
-    T__31=32
-    T__32=33
-    T__33=34
-    VARNAME=35
-    BOOL=36
-    INT=37
-    STRING=38
-    COMMENT=39
-    WS=40
+    T__0 = 1
+    T__1 = 2
+    T__2 = 3
+    T__3 = 4
+    T__4 = 5
+    T__5 = 6
+    T__6 = 7
+    T__7 = 8
+    T__8 = 9
+    T__9 = 10
+    T__10 = 11
+    T__11 = 12
+    T__12 = 13
+    T__13 = 14
+    T__14 = 15
+    T__15 = 16
+    T__16 = 17
+    T__17 = 18
+    T__18 = 19
+    T__19 = 20
+    T__20 = 21
+    T__21 = 22
+    T__22 = 23
+    T__23 = 24
+    T__24 = 25
+    T__25 = 26
+    T__26 = 27
+    T__27 = 28
+    T__28 = 29
+    T__29 = 30
+    T__30 = 31
+    T__31 = 32
+    T__32 = 33
+    T__33 = 34
+    VARNAME = 35
+    BOOL = 36
+    INT = 37
+    STRING = 38
+    COMMENT = 39
+    WS = 40
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.12.0")
-        self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
+        self._interp = ParserATNSimulator(
+            self, self.atn, self.decisionsToDFA, self.sharedContextCache
+        )
         self._predicates = None
 
-
-
-
     class ProgContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def EOF(self):
             return self.getToken(GQLanguageParser.EOF, 0)
 
-        def stmt(self, i:int=None):
+        def stmt(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.StmtContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.StmtContext,i)
-
+                return self.getTypedRuleContext(GQLanguageParser.StmtContext, i)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_prog
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterProg" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterProg"):
                 listener.enterProg(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitProg" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitProg"):
                 listener.exitProg(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitProg" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitProg"):
                 return visitor.visitProg(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def prog(self):
 
         localctx = GQLanguageParser.ProgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_prog)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 25
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==2 or _la==4:
+            while _la == 2 or _la == 4:
                 self.state = 20
                 self.stmt()
                 self.state = 21
@@ -233,41 +1832,37 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class StmtContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def bind(self):
-            return self.getTypedRuleContext(GQLanguageParser.BindContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.BindContext, 0)
 
         def print_(self):
-            return self.getTypedRuleContext(GQLanguageParser.PrintContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.PrintContext, 0)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_stmt
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmt" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterStmt"):
                 listener.enterStmt(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmt" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitStmt"):
                 listener.exitStmt(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmt" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStmt"):
                 return visitor.visitStmt(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def stmt(self):
 
@@ -298,41 +1893,37 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class BindContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def var(self):
-            return self.getTypedRuleContext(GQLanguageParser.VarContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.VarContext, 0)
 
         def expr(self):
-            return self.getTypedRuleContext(GQLanguageParser.ExprContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.ExprContext, 0)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_bind
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBind" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterBind"):
                 listener.enterBind(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBind" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitBind"):
                 listener.exitBind(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBind" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitBind"):
                 return visitor.visitBind(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def bind(self):
 
@@ -356,37 +1947,34 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class PrintContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def expr(self):
-            return self.getTypedRuleContext(GQLanguageParser.ExprContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.ExprContext, 0)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_print
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrint" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterPrint"):
                 listener.enterPrint(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrint" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitPrint"):
                 listener.exitPrint(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrint" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitPrint"):
                 return visitor.visitPrint(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def print_(self):
 
@@ -406,11 +1994,12 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class VarContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -420,22 +2009,19 @@ class GQLanguageParser ( Parser ):
         def getRuleIndex(self):
             return GQLanguageParser.RULE_var
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterVar" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterVar"):
                 listener.enterVar(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitVar" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitVar"):
                 listener.exitVar(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitVar" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitVar"):
                 return visitor.visitVar(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def var(self):
 
@@ -453,11 +2039,12 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ValContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -473,33 +2060,30 @@ class GQLanguageParser ( Parser ):
         def getRuleIndex(self):
             return GQLanguageParser.RULE_val
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterVal" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterVal"):
                 listener.enterVal(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitVal" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitVal"):
                 listener.exitVal(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitVal" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitVal"):
                 return visitor.visitVal(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def val(self):
 
         localctx = GQLanguageParser.ValContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_val)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 44
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 481036337152) != 0)):
+            if not ((((_la) & ~0x3F) == 0 and ((1 << _la) & 481036337152) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -512,61 +2096,54 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ExprContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def var(self):
-            return self.getTypedRuleContext(GQLanguageParser.VarContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.VarContext, 0)
 
         def val(self):
-            return self.getTypedRuleContext(GQLanguageParser.ValContext,0)
+            return self.getTypedRuleContext(GQLanguageParser.ValContext, 0)
 
-
-        def expr(self, i:int=None):
+        def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.ExprContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.ExprContext,i)
-
+                return self.getTypedRuleContext(GQLanguageParser.ExprContext, i)
 
         def set_(self):
-            return self.getTypedRuleContext(GQLanguageParser.SetContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.SetContext, 0)
 
         def lambda_(self):
-            return self.getTypedRuleContext(GQLanguageParser.LambdaContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.LambdaContext, 0)
 
         def tuple_(self):
-            return self.getTypedRuleContext(GQLanguageParser.TupleContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.TupleContext, 0)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_expr
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExpr" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterExpr"):
                 listener.enterExpr(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExpr" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitExpr"):
                 listener.exitExpr(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExpr" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitExpr"):
                 return visitor.visitExpr(self)
             else:
                 return visitor.visitChildren(self)
 
-
-
-    def expr(self, _p:int=0):
+    def expr(self, _p: int = 0):
         _parentctx = self._ctx
         _parentState = self.state
         localctx = GQLanguageParser.ExprContext(self, self._ctx, _parentState)
@@ -577,7 +2154,7 @@ class GQLanguageParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 107
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 2, self._ctx)
             if la_ == 1:
                 self.state = 47
                 self.var()
@@ -745,26 +2322,32 @@ class GQLanguageParser ( Parser ):
                 self.tuple_()
                 pass
 
-
             self._ctx.stop = self._input.LT(-1)
             self.state = 123
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
+            _alt = self._interp.adaptivePredict(self._input, 4, self._ctx)
+            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 121
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input, 3, self._ctx)
                     if la_ == 1:
-                        localctx = GQLanguageParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        localctx = GQLanguageParser.ExprContext(
+                            self, _parentctx, _parentState
+                        )
+                        self.pushNewRecursionContext(
+                            localctx, _startState, self.RULE_expr
+                        )
                         self.state = 109
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
+
+                            raise FailedPredicateException(
+                                self, "self.precpred(self._ctx, 9)"
+                            )
                         self.state = 110
                         self.match(GQLanguageParser.T__22)
                         self.state = 111
@@ -772,12 +2355,19 @@ class GQLanguageParser ( Parser ):
                         pass
 
                     elif la_ == 2:
-                        localctx = GQLanguageParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        localctx = GQLanguageParser.ExprContext(
+                            self, _parentctx, _parentState
+                        )
+                        self.pushNewRecursionContext(
+                            localctx, _startState, self.RULE_expr
+                        )
                         self.state = 112
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
+
+                            raise FailedPredicateException(
+                                self, "self.precpred(self._ctx, 8)"
+                            )
                         self.state = 113
                         self.match(GQLanguageParser.T__23)
                         self.state = 114
@@ -785,12 +2375,19 @@ class GQLanguageParser ( Parser ):
                         pass
 
                     elif la_ == 3:
-                        localctx = GQLanguageParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        localctx = GQLanguageParser.ExprContext(
+                            self, _parentctx, _parentState
+                        )
+                        self.pushNewRecursionContext(
+                            localctx, _startState, self.RULE_expr
+                        )
                         self.state = 115
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
+
+                            raise FailedPredicateException(
+                                self, "self.precpred(self._ctx, 7)"
+                            )
                         self.state = 116
                         self.match(GQLanguageParser.T__24)
                         self.state = 117
@@ -798,22 +2395,28 @@ class GQLanguageParser ( Parser ):
                         pass
 
                     elif la_ == 4:
-                        localctx = GQLanguageParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        localctx = GQLanguageParser.ExprContext(
+                            self, _parentctx, _parentState
+                        )
+                        self.pushNewRecursionContext(
+                            localctx, _startState, self.RULE_expr
+                        )
                         self.state = 118
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
+
+                            raise FailedPredicateException(
+                                self, "self.precpred(self._ctx, 4)"
+                            )
                         self.state = 119
                         self.match(GQLanguageParser.T__27)
                         self.state = 120
                         self.expr(5)
                         pass
 
-             
                 self.state = 125
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 4, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -823,22 +2426,22 @@ class GQLanguageParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
-
     class SetContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def expr(self, i:int=None):
+        def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.ExprContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.ExprContext,i)
+                return self.getTypedRuleContext(GQLanguageParser.ExprContext, i)
 
-
-        def INT(self, i:int=None):
+        def INT(self, i: int = None):
             if i is None:
                 return self.getTokens(GQLanguageParser.INT)
             else:
@@ -847,32 +2450,29 @@ class GQLanguageParser ( Parser ):
         def getRuleIndex(self):
             return GQLanguageParser.RULE_set
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSet" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterSet"):
                 listener.enterSet(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSet" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitSet"):
                 listener.exitSet(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSet" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSet"):
                 return visitor.visitSet(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def set_(self):
 
         localctx = GQLanguageParser.SetContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_set)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.state = 144
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 6, self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 126
@@ -890,7 +2490,7 @@ class GQLanguageParser ( Parser ):
                 self.state = 134
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==31:
+                while _la == 31:
                     self.state = 130
                     self.match(GQLanguageParser.T__30)
                     self.state = 131
@@ -917,7 +2517,6 @@ class GQLanguageParser ( Parser ):
                 self.match(GQLanguageParser.T__29)
                 pass
 
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -926,45 +2525,40 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class LambdaContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def expr(self):
-            return self.getTypedRuleContext(GQLanguageParser.ExprContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.ExprContext, 0)
 
         def var(self):
-            return self.getTypedRuleContext(GQLanguageParser.VarContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.VarContext, 0)
 
         def tuple_(self):
-            return self.getTypedRuleContext(GQLanguageParser.TupleContext,0)
-
+            return self.getTypedRuleContext(GQLanguageParser.TupleContext, 0)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_lambda
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLambda" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterLambda"):
                 listener.enterLambda(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLambda" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitLambda"):
                 listener.exitLambda(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLambda" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitLambda"):
                 return visitor.visitLambda(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def lambda_(self):
 
@@ -1000,60 +2594,55 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class TupleContext(ParserRuleContext):
-        __slots__ = 'parser'
+        __slots__ = "parser"
 
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+        def __init__(
+            self, parser, parent: ParserRuleContext = None, invokingState: int = -1
+        ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def var(self, i:int=None):
+        def var(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.VarContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.VarContext,i)
+                return self.getTypedRuleContext(GQLanguageParser.VarContext, i)
 
-
-        def val(self, i:int=None):
+        def val(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.ValContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.ValContext,i)
+                return self.getTypedRuleContext(GQLanguageParser.ValContext, i)
 
-
-        def tuple_(self, i:int=None):
+        def tuple_(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(GQLanguageParser.TupleContext)
             else:
-                return self.getTypedRuleContext(GQLanguageParser.TupleContext,i)
-
+                return self.getTypedRuleContext(GQLanguageParser.TupleContext, i)
 
         def getRuleIndex(self):
             return GQLanguageParser.RULE_tuple
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTuple" ):
+        def enterRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "enterTuple"):
                 listener.enterTuple(self)
 
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTuple" ):
+        def exitRule(self, listener: ParseTreeListener):
+            if hasattr(listener, "exitTuple"):
                 listener.exitTuple(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTuple" ):
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitTuple"):
                 return visitor.visitTuple(self)
             else:
                 return visitor.visitChildren(self)
-
-
-
 
     def tuple_(self):
 
         localctx = GQLanguageParser.TupleContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_tuple)
-        self._la = 0 # Token type
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 154
@@ -1079,7 +2668,7 @@ class GQLanguageParser ( Parser ):
             self.state = 168
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==31:
+            while _la == 31:
                 self.state = 160
                 self.match(GQLanguageParser.T__30)
                 self.state = 164
@@ -1114,9 +2703,7 @@ class GQLanguageParser ( Parser ):
             self.exitRule()
         return localctx
 
-
-
-    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
+    def sempred(self, localctx: RuleContext, ruleIndex: int, predIndex: int):
         if self._predicates == None:
             self._predicates = dict()
         self._predicates[6] = self.expr_sempred
@@ -1126,23 +2713,15 @@ class GQLanguageParser ( Parser ):
         else:
             return pred(localctx, predIndex)
 
-    def expr_sempred(self, localctx:ExprContext, predIndex:int):
-            if predIndex == 0:
-                return self.precpred(self._ctx, 9)
-         
+    def expr_sempred(self, localctx: ExprContext, predIndex: int):
+        if predIndex == 0:
+            return self.precpred(self._ctx, 9)
 
-            if predIndex == 1:
-                return self.precpred(self._ctx, 8)
-         
+        if predIndex == 1:
+            return self.precpred(self._ctx, 8)
 
-            if predIndex == 2:
-                return self.precpred(self._ctx, 7)
-         
+        if predIndex == 2:
+            return self.precpred(self._ctx, 7)
 
-            if predIndex == 3:
-                return self.precpred(self._ctx, 4)
-         
-
-
-
-
+        if predIndex == 3:
+            return self.precpred(self._ctx, 4)

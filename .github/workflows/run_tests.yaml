@@ -55,6 +55,7 @@ jobs:
 
         # Create antlr files
       - name: Set up antlr
+        working-directory: project/language
         run: |
           cd project
           antlr4 -Dlanguage=Python3 Language.g4 -o antlr -visitor
