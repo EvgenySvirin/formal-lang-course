@@ -1,9 +1,12 @@
+from typing import TextIO, List
+
 import antlr4
 import pydot
 from antlr4 import *
 from project.language.antlr.GQLanguageLexer import GQLanguageLexer
 from project.language.antlr.GQLanguageParser import GQLanguageParser
 from project.language.antlr.GQLanguageListener import GQLanguageListener
+from project.language.antlr.GQLanguageVisitor import GQLanguageVisitor
 import networkx as nx
 
 
@@ -53,25 +56,27 @@ def is_correct_syntax_file(filename: str):
 class GraphCreator(GQLanguageListener):
     def __init__(self, filename):
         self.dot = pydot.Dot(filename)
-        self.node = 1
-        self.l = [0]
+        self.cur = 1
+        self.detour_stack = [0]
+        self.rules = GQLanguageParser.ruleNames
 
     def visitTerminal(self, node: antlr4.TerminalNode):
-        self.dot.add_node(pydot.Node(self.node, label=f"'{node}'"))
-        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
-        self.node += 1
+        self.dot.add_node(pydot.Node(self.cur, label=f"'{node}'"))
+        self.dot.add_edge(pydot.Edge(self.detour_stack[-1], self.cur))
+
+        self.cur += 1
 
     def enterEveryRule(self, ctx: antlr4.ParserRuleContext):
         self.dot.add_node(
-            pydot.Node(self.node, label=GQLanguageParser.ruleNames[ctx.getRuleIndex()])
+            pydot.Node(self.cur, label=self.rules[ctx.getRuleIndex()])
         )
-        self.dot.add_edge(pydot.Edge(self.l[-1], self.node))
+        self.dot.add_edge(pydot.Edge(self.detour_stack[-1], self.cur))
 
-        self.l.append(self.node)
-        self.node += 1
+        self.detour_stack.append(self.cur)
+        self.cur += 1
 
     def exitEveryRule(self, ctx: antlr4.ParserRuleContext):
-        self.l.pop()
+        self.detour_stack.pop()
 
 
 def get_dot_syntax(inp: InputStream, filename: str):
@@ -80,7 +85,6 @@ def get_dot_syntax(inp: InputStream, filename: str):
     @param inp: stream of program
     @param filename: file name
     """
-
     parser = parse_stream(inp)
     if parser.getNumberOfSyntaxErrors():
         print("Syntax error")
@@ -88,6 +92,9 @@ def get_dot_syntax(inp: InputStream, filename: str):
     creator = GraphCreator(filename)
     antlr4.ParseTreeWalker().walk(creator, parser.prog())
     creator.dot.write(filename)
+
+
+
 
 
 def get_dot_syntax_text(text: str, filename: str):
