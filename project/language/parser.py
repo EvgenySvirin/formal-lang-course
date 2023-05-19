@@ -67,9 +67,7 @@ class GraphCreator(GQLanguageListener):
         self.cur += 1
 
     def enterEveryRule(self, ctx: antlr4.ParserRuleContext):
-        self.dot.add_node(
-            pydot.Node(self.cur, label=self.rules[ctx.getRuleIndex()])
-        )
+        self.dot.add_node(pydot.Node(self.cur, label=self.rules[ctx.getRuleIndex()]))
         self.dot.add_edge(pydot.Edge(self.detour_stack[-1], self.cur))
 
         self.detour_stack.append(self.cur)
@@ -92,9 +90,6 @@ def get_dot_syntax(inp: InputStream, filename: str):
     creator = GraphCreator(filename)
     antlr4.ParseTreeWalker().walk(creator, parser.prog())
     creator.dot.write(filename)
-
-
-
 
 
 def get_dot_syntax_text(text: str, filename: str):
