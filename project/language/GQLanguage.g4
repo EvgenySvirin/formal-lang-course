@@ -1,12 +1,13 @@
-```
-prog: (stmt';'(\n'*))* EOF;
+grammar GQLanguage;
+
+prog: (stmt ';')* EOF;
 
 stmt: bind | print;
-bind: 'let' var '=' expr
-print: 'print' expr
+bind: 'let' var '=' expr;
+print: 'print' expr;
 
-var: VARNAME
-val: INT | STRING | SET | TUPLE
+var: VARNAME;
+val: BOOL | INT | STRING;
 
 expr:
   var                          // переменные
@@ -22,20 +23,29 @@ expr:
   | 'get_vertices' expr        // получить все вершины
   | 'get_edges' expr           // получить все рёбра
   | 'get_labels' expr          // получить все метки
-  | 'map' expr 'use' lambda    // классический map
+  | 'map' expr 'use' expr      // классический map
   | 'filter' expr 'use' expr   // классический filter
-  | 'load' string              // загрузка графа
+  | 'load' expr                // загрузка графа
   | expr 'and' expr            // пересечение языков
   | expr '++' expr             // конкатенация языков
   | expr 'or' expr             // объединение языков
   | 'closure' expr             // замыкание языков (звезда Клини)
-  | 'step' expr                // единичный переход
+  | 'step' expr 'use' expr     // переход
   | expr 'contains' expr       // левое множество содержит правое выражение
+  | set
+  | lambda
+  | tuple
+  ;
 
-VARNAME = (_*)([a-zA-Z]+)([a-zA-Z_0-9]*);
-INT = [0-9]+;
-STRING = '"' .* '"';
-SET = '{' '}' | '{' val (',' val)* '}' | '{' INT '..' INT '}';
-tuple: '(' (val | var | tuple)  (',' val | var | tuple)+ ')';
+set: '{' '}' | '{' expr (',' expr)* '}' | '{' INT '..' INT '}';
 lambda: 'lambda' (var | tuple) '->' expr;
-```
+tuple : '(' (var | val | tuple) (',' (var | val | tuple))* ')';
+
+VARNAME: (([a-zA-Z]|[_])+)([a-zA-Z_0-9]*);
+
+BOOL: 'true' | 'false' ;
+INT: [0-9]+ ;
+STRING: '"' .*? '"';
+
+COMMENT: ('//' .*? | '/*' .*? '*/') -> skip;
+WS: [ \t\r\n]+ -> skip;
